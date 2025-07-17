@@ -1,0 +1,1695 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Managing Pain and Constipation in Advanced Pancreatic Cancer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        .serif { font-family: 'Crimson Text', serif; }
+        .sans { font-family: 'Inter', sans-serif; }
+        body { max-width: 100vw; overflow-x: hidden; }
+        
+        /* Mermaid chart styling */
+        .mermaid-container {
+            display: flex;
+            justify-content: center;
+            min-height: 300px;
+            max-height: 800px;
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+            .mermaid-container {
+                padding: 15px;
+                margin: 15px 0;
+            }
+        }
+
+        .mermaid-container .mermaid {
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+            cursor: grab;
+            transition: transform 0.3s ease;
+            transform-origin: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            touch-action: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .mermaid-container .mermaid svg {
+            max-width: 100%;
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .mermaid-container .mermaid:active {
+            cursor: grabbing;
+        }
+
+        .mermaid-container.zoomed .mermaid {
+            height: 100%;
+            width: 100%;
+            cursor: grab;
+        }
+
+        .mermaid-controls {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mermaid-control-btn {
+            background: #ffffff;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #374151;
+            font-size: 14px;
+            min-width: 36px;
+            height: 36px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mermaid-control-btn:hover {
+            background: #f8fafc;
+            border-color: #3b82f6;
+            color: #3b82f6;
+            transform: translateY(-1px);
+        }
+
+        .mermaid-control-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Override mermaid default styles for better contrast and consistency */
+        .mermaid .node rect,
+        .mermaid .node circle,
+        .mermaid .node polygon {
+            stroke-width: 2px !important;
+        }
+
+        .mermaid .edgePath .path {
+            stroke-width: 2px !important;
+        }
+
+        .mermaid text {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 13px !important;
+            font-weight: 500 !important;
+        }
+
+        .mermaid .node text {
+            font-weight: 600 !important;
+        }
+
+        /* Custom node colors with better contrast */
+        .mermaid .node[style*="fill:#dbeafe"] text {
+            fill: #1e40af !important;
+        }
+
+        .mermaid .node[style*="fill:#f3e8ff"] text {
+            fill: #7c3aed !important;
+        }
+
+        .mermaid .node[style*="fill:#fef3c7"] text {
+            fill: #d97706 !important;
+        }
+
+        .mermaid .node[style*="fill:#fecaca"] text {
+            fill: #dc2626 !important;
+        }
+
+        .mermaid .node[style*="fill:#d1fae5"] text {
+            fill: #059669 !important;
+        }
+
+        .mermaid .node[style*="fill:#fed7aa"] text {
+            fill: #ea580c !important;
+        }
+
+        .mermaid .node[style*="fill:#e0e7ff"] text {
+            fill: #4338ca !important;
+        }
+
+        .mermaid .node[style*="fill:#fce7f3"] text {
+            fill: #be185d !important;
+        }
+
+        /* Ensure all text has good contrast */
+        .mermaid text {
+            fill: #374151 !important;
+        }
+        
+        /* Prevent horizontal overflow on small screens */
+        @media (max-width: 768px) {
+            .mermaid-container {
+                overflow-x: auto;
+            }
+        }
+
+        .toc-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 100vh;
+            background: #f8fafc;
+            border-right: 1px solid #e2e8f0;
+            overflow-y: auto;
+            z-index: 50;
+            padding: 2rem 1.5rem;
+        }
+        
+        .main-content {
+            margin-left: 280px;
+            min-height: 100vh;
+        }
+        
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.8) 0%, rgba(59, 130, 246, 0.6) 100%);
+        }
+        
+        .citation-link {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #3b82f6;
+        }
+        
+        .citation-link:hover {
+            color: #1d4ed8;
+            border-bottom-style: solid;
+        }
+        
+        .section-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .protocol-table {
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+        }
+        
+        .protocol-table th {
+            background: #1e40af;
+            color: white;
+            padding: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .protocol-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .protocol-table tr:nth-child(even) {
+            background: #f8fafc;
+        }
+        
+        @media (max-width: 1024px) {
+            .toc-fixed {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .toc-fixed.open {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+
+            /* Responsive mermaid controls */
+            .mermaid-control-btn:not(.reset-zoom) {
+                display: none;
+            }
+            .mermaid-controls {
+                top: auto;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border-left: 4px solid #3b82f6;
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .urgent-box {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border-left: 4px solid #ef4444;
+        }
+    </style>
+  </head>
+
+  <body class="bg-gray-50 sans">
+    <!-- Table of Contents -->
+    <nav class="toc-fixed">
+      <div class="mb-8">
+        <h3 class="serif text-lg font-semibold text-gray-900 mb-4">Table of Contents</h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="#understanding" class="text-blue-600 hover:text-blue-800 block py-1">Understanding the Situation</a>
+          </li>
+          <li>
+            <a href="#constipation" class="text-blue-600 hover:text-blue-800 block py-1">Addressing Severe Constipation</a>
+          </li>
+          <li>
+            <a href="#pain" class="text-blue-600 hover:text-blue-800 block py-1">Managing Back Pain</a>
+          </li>
+          <li>
+            <a href="#integration" class="text-blue-600 hover:text-blue-800 block py-1">Integrating Management</a>
+          </li>
+          <li>
+            <a href="#supportive" class="text-blue-600 hover:text-blue-800 block py-1">Supportive Care Strategies</a>
+          </li>
+          <li>
+            <a href="#emergency" class="text-blue-600 hover:text-blue-800 block py-1">When to Seek Help</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="mt-8 p-4 bg-blue-50 rounded-lg">
+        <h4 class="font-semibold text-blue-900 mb-2">Urgent Action</h4>
+        <p class="text-sm text-blue-800">Consult doctor immediately for constipation medication and pain management optimization.</p>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button class="lg:hidden fixed top-4 left-4 z-50 bg-blue-600 text-white p-2 rounded-md shadow-lg" onclick="toggleToc()">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Hero Section -->
+      <section class="relative min-h-screen bg-gray-900 overflow-hidden">
+        <div class="absolute inset-0">
+          <img 
+            src="https://kimi-web-img.moonshot.cn/img/static01.nyt.com/b3a6ce2a6fe754e990ebe8a6afe36abb8e65cbee.jpg"
+            alt="Doctor reviewing medical chart at sunset"
+            class="w-full h-full object-cover opacity-30"
+            referrerpolicy="no-referrer"
+            data-size="wallpaper"
+            data-aspect="wide"
+            data-color="orange"
+            data-style="photo"
+            data-query="doctor reviewing medical chart sunset"
+            data-modified="1"
+            data-score="11599.00"
+          />
+          <div class="hero-overlay absolute inset-0"></div>
+        </div>
+
+        <div class="relative z-10 container mx-auto px-6 py-16">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-screen">
+            <!-- Main Title -->
+            <div class="text-white">
+              <h1 class="serif text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight mb-6">
+                <em class="text-blue-200">Managing Pain and Constipation</em>
+                <br/>
+                <span class="text-white">in Advanced Pancreatic Cancer</span>
+              </h1>
+              <p class="text-lg sm:text-xl text-blue-100 mb-8 leading-relaxed">
+                A comprehensive guide for symptom management and quality of life optimization in palliative care
+              </p>
+            </div>
+
+            <!-- Key Highlights Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="bg-white/90 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                <div class="text-red-600 text-2xl mb-3">
+                  <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h3 class="font-semibold text-gray-900 mb-2">Urgent Medical Consultation</h3>
+                <p class="text-sm text-gray-700">Immediate doctor consultation needed for severe constipation and pain management</p>
+              </div>
+
+              <div class="bg-white/90 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                <div class="text-blue-600 text-2xl mb-3">
+                  <i class="fas fa-pills"></i>
+                </div>
+                <h3 class="font-semibold text-gray-900 mb-2">Proactive Bowel Protocol</h3>
+                <p class="text-sm text-gray-700">Systematic laxative regimen to manage opioid-induced constipation</p>
+              </div>
+
+              <div class="bg-white/90 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                <div class="text-green-600 text-2xl mb-3">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="font-semibold text-gray-900 mb-2">WHO Pain Ladder</h3>
+                <p class="text-sm text-gray-700">Stepwise approach to pain management with strong opioids</p>
+              </div>
+
+              <div class="bg-white/90 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                <div class="text-purple-600 text-2xl mb-3">
+                  <i class="fas fa-balance-scale"></i>
+                </div>
+                <h3 class="font-semibold text-gray-900 mb-2">Integrated Care</h3>
+                <p class="text-sm text-gray-700">Holistic approach addressing pain and constipation concurrently</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Executive Summary -->
+      <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+          <div class="urgent-box p-8 rounded-xl mb-12">
+            <div class="flex items-start space-x-4">
+              <div class="text-red-600 text-3xl mt-1">
+                <i class="fas fa-exclamation-circle"></i>
+              </div>
+              <div>
+                <h2 class="serif text-2xl font-bold text-gray-900 mb-4">Executive Summary</h2>
+                <p class="text-lg text-gray-800 leading-relaxed">
+                  Your father should <strong>urgently consult his doctor or a palliative care specialist</strong> to get prescribed medication for his severe constipation and to optimize his pain management. Given his advanced pancreatic cancer and back pain, he likely needs a <strong>strong opioid for pain</strong>, which <strong>must be accompanied by a proactive bowel regimen</strong> (laxatives) to prevent or treat constipation. His ability to drink fluids and remain ambulatory are positive factors for managing these symptoms at home with appropriate medical guidance.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Understanding the Situation -->
+      <section id="understanding" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+          <h2 class="serif text-4xl font-bold text-gray-900 mb-12 text-center">Understanding the Situation</h2>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="section-card p-8">
+              <div class="text-blue-600 text-3xl mb-4">
+                <i class="fas fa-user-md"></i>
+              </div>
+              <h3 class="serif text-xl font-semibold text-gray-900 mb-4">Patient Profile</h3>
+              <p class="text-gray-700 mb-4">
+                The patient is in the <strong>advanced stages of pancreatic cancer</strong> and is <strong>no longer undergoing chemotherapy</strong>. This signifies a pivotal shift in care goals towards <strong>palliative management</strong>, where the primary focus is on symptom control and enhancing quality of life.
+              </p>
+              <div class="bg-blue-50 p-4 rounded-lg">
+                <p class="text-sm text-blue-800">
+                  <strong>Key Point:</strong> The cessation of chemotherapy suggests care goals have shifted to comfort and symptom management.
+                </p>
+              </div>
+            </div>
+
+            <div class="section-card p-8">
+              <div class="text-red-600 text-3xl mb-4">
+                <i class="fas fa-exclamation-triangle"></i>
+              </div>
+              <h3 class="serif text-xl font-semibold text-gray-900 mb-4">Key Symptoms</h3>
+              <p class="text-gray-700 mb-4">
+                The primary symptoms significantly impacting quality of life are <strong>back pain and severe constipation</strong>, the latter being so critical that it is <strong>impairing his ability to eat properly</strong>.
+              </p>
+              <div class="bg-red-50 p-4 rounded-lg">
+                <p class="text-sm text-red-800">
+                  <strong>Critical:</strong> Severe constipation affecting nutrition requires immediate medical attention.
+                </p>
+              </div>
+            </div>
+
+            <div class="section-card p-8">
+              <div class="text-green-600 text-3xl mb-4">
+                <i class="fas fa-walking"></i>
+              </div>
+              <h3 class="serif text-xl font-semibold text-gray-900 mb-4">Current Status</h3>
+              <p class="text-gray-700 mb-4">
+                Despite advanced illness, the patient <strong>remains ambulatory and able to walk and work</strong>, indicating a relatively good performance status. However, he <strong>has not been prescribed any medication for severe constipation</strong>.
+              </p>
+              <div class="bg-green-50 p-4 rounded-lg">
+                <p class="text-sm text-green-800">
+                  <strong>Positive:</strong> Ambulatory status supports home management with proper guidance.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Addressing Severe Constipation -->
+      <section id="constipation" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+          <h2 class="serif text-4xl font-bold text-gray-900 mb-12 text-center">Addressing Severe Constipation</h2>
+
+          <!-- Opioid-Constipation Connection -->
+          <div class="mb-12">
+            <div class="highlight-box p-8 rounded-xl mb-8">
+              <h3 class="serif text-2xl font-semibold text-gray-900 mb-4">
+                <i class="fas fa-link text-blue-600 mr-3"></i>
+                The Link Between Opioid Pain Medication and Constipation
+              </h3>
+              <p class="text-gray-700 mb-4">
+                <strong>Opioid pain medications</strong>, which are commonly prescribed for cancer-related pain, are a <strong>well-known and major cause of constipation</strong>
+                <a href="https://www.cancer.gov/about-cancer/treatment/side-effects/constipation" class="citation-link">[7]</a>,
+                <a href="https://www.cancer.org/cancer/types/pancreatic-cancer/treating/pain-control.html" class="citation-link">[32]</a>.
+                These medications work by binding to opioid receptors in the gastrointestinal (GI) tract, <strong>slowing down gut motility and reducing the secretion of fluids into the intestine</strong>.
+              </p>
+              <div class="bg-white p-6 rounded-lg border-l-4 border-blue-500">
+                <p class="font-semibold text-blue-900 mb-2">Clinical Insight:</p>
+                <p class="text-blue-800">
+                  The American Cancer Society notes that constipation from opioids <strong>does not improve on its own and requires treatment</strong>, typically with stool softeners and/or laxatives taken daily
+                  <a href="https://www.cancer.org/cancer/types/pancreatic-cancer/treating/pain-control.html" class="citation-link">[32]</a>.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Palliative Bowel Protocol -->
+          <div class="mb-12">
+            <h3 class="serif text-2xl font-semibold text-gray-900 mb-6">
+              <i class="fas fa-clipboard-list text-green-600 mr-3"></i>
+              The Palliative Bowel Protocol: A Step-by-Step Approach
+            </h3>
+
+            <p class="text-gray-700 mb-6">
+              A structured approach to managing constipation, particularly <strong>opioid-induced constipation (OIC)</strong> in palliative care patients, is often outlined in a <strong>Palliative Bowel Protocol</strong>. One such protocol, from Interior Health, emphasizes <strong>proactive management</strong>, initiating laxative therapy concurrently with opioid treatment
+              <a href="https://www.interiorhealth.ca/sites/default/files/PDFS/palliative-bowel-protocol.pdf" class="citation-link">[103]</a>.
+            </p>
+
+            <div class="warning-box p-6 rounded-lg mb-6">
+              <p class="font-semibold text-amber-900 mb-2">
+                <i class="fas fa-lightbulb mr-2"></i>
+                Core Principle:
+              </p>
+              <p class="text-amber-800">
+                <strong>OIC is easier to prevent than to treat</strong>
+                <a href="https://www.interiorhealth.ca/sites/default/files/PDFS/palliative-bowel-protocol.pdf" class="citation-link">[103]</a>.
+              </p>
+            </div>
+
+            <!-- Protocol Table -->
+            <div class="overflow-x-auto">
+              <table class="protocol-table w-full border-collapse border border-gray-300 rounded-lg overflow-hidden">
+                <thead>
+                  <tr>
+                    <th class="border border-gray-300">Time Since Opioid Initiation / Last BM</th>
+                    <th class="border border-gray-300">Sennosides (Stimulant Laxative)</th>
+                    <th class="border border-gray-300">Osmotic Laxative (Choice of One)</th>
+                    <th class="border border-gray-300">Rectal Intervention (If No BM &amp; Indicated)</th>
+                    <th class="border border-gray-300">Action if Ineffective</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="border border-gray-300 font-semibold">Opioid Start (Day 0)</td>
+                    <td class="border border-gray-300">12 mg PO HS</td>
+                    <td class="border border-gray-300">-</td>
+                    <td class="border border-gray-300">-</td>
+                    <td class="border border-gray-300">-</td>
+                  </tr>
+                  <tr>
+                    <td class="border border-gray-300 font-semibold">No BM in 24 hrs (Day 1)</td>
+                    <td class="border border-gray-300">Increase to 24 mg PO HS</td>
+                    <td class="border border-gray-300">-</td>
+                    <td class="border border-gray-300">-</td>
+                    <td class="border border-gray-300">-</td>
+                  </tr>
+                  <tr>
+                    <td class="border border-gray-300 font-semibold">No BM in 48 hrs (Day 2)</td>
+                    <td class="border border-gray-300">Increase to 24 mg PO BID</td>
+                    <td class="border border-gray-300"><strong>Add ONE</strong>:
+                      <br/>• Lactulose 15 mL PO daily, OR
+                      <br/>• Magnesium Citrate 150 mg PO daily, OR
+                      <br/>• PEG 3350 17g/240mL PO daily (not to exceed 17g/day) <a href="https://www.interiorhealth.ca/sites/default/files/PDFS/palliative-bowel-protocol.pdf" class="citation-link">[103]</a>
+                    </td>
+                    <td class="border border-gray-300">-</td>
+                    <td class="border border-gray-300">-</td>
+                  </tr>
+                  <tr>
+                    <td class="border border-gray-300 font-semibold">No BM in 72 hrs (Day 3)</td>
+                    <td class="border border-gray-300">Continue 24 mg PO BID</td>
+                    <td class="border border-gray-300"><strong>Increase chosen osmotic</strong>:
+                      <br/>• Lactulose to 30 mL PO daily, OR
+                      <br/>• Magnesium Citrate to 150 mg PO BID, OR
+                      <br/>• Continue PEG 3350 17g/240mL PO daily <a href="https://www.interiorhealth.ca/sites/default/files/PDFS/palliative-bowel-protocol.pdf" class="citation-link">[103]</a>
+                    </td>
+                    <td class="border border-gray-300">-</td>
+                    <td class="border border-gray-300">-</td>
+                  </tr>
+                  <tr>
+                    <td class="border border-gray-300 font-semibold">No BM in 96 hrs (Day 4)</td>
+                    <td class="border border-gray-300">Increase to 24 mg PO TID</td>
+                    <td class="border border-gray-300"><strong>Further increase osmotic</strong>:
+                      <br/>• Lactulose to 45 mL PO daily (may split), OR
+                      <br/>• Magnesium Citrate to 150 mg PO TID, OR
+                      <br/>• Continue PEG 3350 17g/240mL PO daily <a href="https://www.interiorhealth.ca/sites/default/files/PDFS/palliative-bowel-protocol.pdf" class="citation-link">[103]</a>
+                    </td>
+                    <td class="border border-gray-300">-</td>
+                    <td class="border border-gray-300">-</td>
+                  </tr>
+                  <tr>
+                    <td class="border border-gray-300 font-semibold">No BM in 120 hrs (Day 5)</td>
+                    <td class="border border-gray-300">Continue 24 mg PO TID</td>
+                    <td class="border border-gray-300">Continue chosen osmotic</td>
+                    <td class="border border-gray-300"><strong>Nurse assessment of abdomen/rectum</strong>.
+                      <br/>If impaction:
+                      <br/>• Glycerin suppository (hard stool) OR
+                      <br/>• Bisacodyl 10mg suppository (soft stool)
+                      <br/>If ineffective after 60 min, enema (e.g., Sodium Phosphate 130mL PR - caution in renal impairment) <a href="https://www.interiorhealth.ca/sites/default/files/PDFS/palliative-bowel-protocol.pdf" class="citation-link">[103]</a>
+                    </td>
+                    <td class="border border-gray-300"><strong>Contact MRP</strong>. If no BM after suppository/enema, MRP to consult palliative specialist re: PAMORA (e.g., methylnaltrexone, naloxegol, naldemedine) <a href="https://www.interiorhealth.ca/sites/default/files/PDFS/palliative-bowel-protocol.pdf" class="citation-link">[103]</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p class="text-sm text-gray-600 mt-4 italic">
+              <strong>Table 1:</strong> Interior Health Palliative Bowel Protocol Medication Escalation
+              <a href="https://www.interiorhealth.ca/sites/default/files/PDFS/palliative-bowel-protocol.pdf" class="citation-link">[103]</a>,
+              <a href="https://www.interiorhealth.ca/sites/default/files/PDFS/palliative-bowel-protocol.pdf" class="citation-link">[158]</a>
+            </p>
+          </div>
+
+          <!-- Key Medications -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <div class="section-card p-8">
+              <h4 class="serif text-xl font-semibold text-gray-900 mb-4">
+                <i class="fas fa-pills text-blue-600 mr-2"></i>
+                Sennosides (Stimulant Laxative)
+              </h4>
+              <p class="text-gray-700 mb-4">
+                <strong>Sennosides</strong> (e.g., Senokot) work by increasing the muscular contractions of the intestine, helping to move stool through the bowel
+                <a href="https://www.cancer.gov/about-cancer/treatment/side-effects/constipation" class="citation-link">[7]</a>,
+                <a href="https://www.dana-farber.org/health-library/constipation-management" class="citation-link">[83]</a>.
+              </p>
+              <div class="bg-blue-50 p-4 rounded-lg">
+                <p class="text-sm text-blue-800">
+                  <strong>Dosing:</strong> Typically initiated at bedtime (12 mg) when opioid therapy begins, with escalating doses based on response.
+                </p>
+              </div>
+            </div>
+
+            <div class="section-card p-8">
+              <h4 class="serif text-xl font-semibold text-gray-900 mb-4">
+                <i class="fas fa-tint text-green-600 mr-2"></i>
+                Polyethylene Glycol (PEG)
+              </h4>
+              <p class="text-gray-700 mb-4">
+                <strong>Polyethylene glycol (PEG)</strong> (e.g., MiraLAX, Restoralax) is an osmotic laxative that works by drawing water into the bowel, softening the stool and making it easier to pass
+                <a href="https://www.cancer.gov/about-cancer/treatment/side-effects/constipation" class="citation-link">[7]</a>,
+                <a href="https://www.virtualhospice.ca/en_US/Main+Site+Navigation/Home/For+Professionals/For+Professionals/Quick+Consults/Symptoms/How+would+you+treat+constipation+in+a+patient+with+advanced+cancer_.aspx" class="citation-link">[64]</a>.
+              </p>
+              <div class="bg-green-50 p-4 rounded-lg">
+                <p class="text-sm text-green-800">
+                  <strong>Dosing:</strong> PEG 3350 (17 grams in 240 mL daily) is added if no BM occurs after 48 hours of escalating sennosides.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Importance of Proactive Management -->
+          <div class="urgent-box p-8 rounded-xl">
+            <h3 class="serif text-2xl font-semibold text-gray-900 mb-4">
+              <i class="fas fa-clock text-red-600 mr-3"></i>
+              Importance of Proactive Management and Medical Consultation
+            </h3>
+            <p class="text-gray-700 mb-4">
+              <strong>Proactive management of constipation is crucial</strong> in patients with advanced cancer, especially if they are taking opioid pain medications or have other risk factors like reduced oral intake or mobility
+              <a href="https://www.virtualhospice.ca/en_US/Main+Site+Navigation/Home/For+Professionals/For+Professionals/Quick+Consults/Symptoms/How+would+you+treat+constipation+in+a+patient+with+advanced+cancer_.aspx" class="citation-link">[64]</a>,
+              <a href="https://www.england.nhs.uk/north-west/wp-content/uploads/sites/48/2020/01/Palliative-Care-Pain-and-Symptom-Control-Guidelines.pdf" class="citation-link">[65]</a>.
+            </p>
+            <div class="bg-white p-6 rounded-lg border-l-4 border-red-500">
+              <p class="font-semibold text-red-900 mb-2">Critical Action:</p>
+              <p class="text-red-800">
+                The NCI emphasizes that doctors may prescribe medicines called laxatives to help <em>prevent</em> or relieve constipation
+                <a href="https://www.cancer.gov/about-cancer/treatment/side-effects/constipation" class="citation-link">[7]</a>.
+                The Palliative Bowel Protocol strongly advocates for initiating laxative therapy <strong>on the same day an opioid regimen is started</strong>, not waiting for constipation to develop
+                <a href="https://www.interiorhealth.ca/sites/default/files/PDFS/palliative-bowel-protocol.pdf" class="citation-link">[103]</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Managing Back Pain -->
+      <section id="pain" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+          <h2 class="serif text-4xl font-bold text-gray-900 mb-12 text-center">Managing Back Pain in Advanced Pancreatic Cancer</h2>
+
+          <!-- Causes of Back Pain -->
+          <div class="mb-12">
+            <h3 class="serif text-2xl font-semibold text-gray-900 mb-6">
+              <i class="fas fa-search text-purple-600 mr-3"></i>
+              Common Causes of Back Pain in Pancreatic Cancer
+            </h3>
+            <p class="text-gray-700 mb-6">
+              <strong>Back pain is a frequent and often severe symptom</strong> in patients with pancreatic cancer. The pain can arise from several mechanisms related to the cancer itself. One common cause is the <strong>tumor pressing on nearby nerves</strong>, such as the celiac plexus, or other organs in the abdomen
+              <a href="https://www.webmd.com/cancer/pancreatic-cancer/manage-pancreatic-cancer-pain" class="citation-link">[10]</a>,
+              <a href="https://www.cancer.org/cancer/types/pancreatic-cancer/treating/pain-control.html" class="citation-link">[32]</a>.
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div class="section-card p-6">
+                <h4 class="font-semibold text-gray-900 mb-3">
+                  <i class="fas fa-crosshairs text-red-600 mr-2"></i>
+                  Tumor Pressure
+                </h4>
+                <p class="text-gray-700 text-sm">
+                  Pancreatic tumors located in the body or tail of the pancreas are particularly prone to causing back pain due to their proximity to the spine and surrounding nerve networks.
+                </p>
+              </div>
+
+              <div class="section-card p-6">
+                <h4 class="font-semibold text-gray-900 mb-3">
+                  <i class="fas fa-bone text-orange-600 mr-2"></i>
+                  Bone Metastasis
+                </h4>
+                <p class="text-gray-700 text-sm">
+                  The cancer can also <strong>spread (metastasize) to the bones of the spine</strong>, leading to localized pain that may be sharp, dull, or aching
+                  <a href="https://www.england.nhs.uk/north-west/wp-content/uploads/sites/48/2020/01/Palliative-Care-Pain-and-Symptom-Control-Guidelines.pdf" class="citation-link">[196]</a>.
+                </p>
+              </div>
+            </div>
+
+            <div class="bg-purple-50 p-6 rounded-lg mt-6">
+              <p class="text-purple-900 font-medium">
+                <i class="fas fa-info-circle mr-2"></i>
+                The pain is often described as a <strong>dull ache in the upper abdomen that radiates to the back</strong> and may worsen after eating or when lying down, sometimes improving when leaning forward
+                <a href="https://www.webmd.com/cancer/pancreatic-cancer/manage-pancreatic-cancer-pain" class="citation-link">[10]</a>,
+                <a href="https://www.medicalnewstoday.com/articles/pancreatic-cancer-back-pain" class="citation-link">[227]</a>.
+              </p>
+            </div>
+          </div>
+
+          <!-- WHO Analgesic Ladder -->
+          <div class="mb-12">
+            <h3 class="serif text-2xl font-semibold text-gray-900 mb-6">
+              <i class="fas fa-stairs text-blue-600 mr-3"></i>
+              Standard Pain Management: The WHO Analgesic Ladder and Opioids
+            </h3>
+
+            <p class="text-gray-700 mb-6">
+              The <strong>World Health Organization (WHO) analgesic ladder</strong> provides a widely accepted framework for managing cancer pain
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4980650/" class="citation-link">[4]</a>,
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4980650/" class="citation-link">[171]</a>.
+              This stepped approach recommends:
+            </p>
+
+            <!-- Mermaid Flowchart -->
+            <div class="mermaid-container">
+              <div class="mermaid-controls">
+                <button class="mermaid-control-btn zoom-in" title="放大">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mermaid-control-btn zoom-out" title="缩小">
+                  <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mermaid-control-btn reset-zoom" title="重置">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+                <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                  <i class="fas fa-expand"></i>
+                </button>
+              </div>
+              <div class="mermaid">
+                flowchart TD
+                A[&#34;Cancer Pain&#34;] --&gt; B{&#34;Pain Severity&#34;}
+                B --&gt;|&#34;Mild&#34;| C[&#34;Step 1: Non-opioids
+                <br/>• Acetaminophen
+                <br/>• NSAIDs&#34;]
+                B --&gt;|&#34;Moderate&#34;| D[&#34;Step 2: Mild Opioids
+                <br/>• Codeine
+                <br/>• Tramadol&#34;]
+                B --&gt;|&#34;Severe&#34;| E[&#34;Step 3: Strong Opioids
+                <br/>• Morphine
+                <br/>• Oxycodone
+                <br/>• Fentanyl&#34;]
+                C --&gt; F[&#34;Adjuvant Medications
+                <br/>can be added at any step&#34;]
+                D --&gt; F
+                E --&gt; F
+                F --&gt; G[&#34;Regular Assessment
+                <br/>and Titration&#34;]
+
+                style A fill:#fee2e2,stroke:#dc2626,stroke-width:3px,color:#1f2937
+                style E fill:#dbeafe,stroke:#2563eb,stroke-width:3px,color:#1f2937
+                style G fill:#dcfce7,stroke:#16a34a,stroke-width:3px,color:#1f2937
+                style B fill:#fef3c7,stroke:#d97706,stroke-width:3px,color:#1f2937
+                style C fill:#f3e8ff,stroke:#9333ea,stroke-width:2px,color:#1f2937
+                style D fill:#f3e8ff,stroke:#9333ea,stroke-width:2px,color:#1f2937
+                style F fill:#fed7aa,stroke:#ea580c,stroke-width:2px,color:#1f2937
+              </div>
+            </div>
+
+            <div class="highlight-box p-6 rounded-lg">
+              <p class="font-semibold text-blue-900 mb-2">
+                <i class="fas fa-star mr-2"></i>
+                For pancreatic cancer pain:
+              </p>
+              <p class="text-blue-800">
+                For <strong>severe pain, strong opioids (like morphine, oxycodone, or fentanyl) become the mainstay of treatment (Step 3)</strong>
+                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4980650/" class="citation-link">[4]</a>,
+                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4980650/" class="citation-link">[171]</a>.
+                The American Cancer Society highlights that <strong>pain medicines work best when taken on a regular schedule</strong>, rather than only when the pain becomes severe
+                <a href="https://www.cancer.org/cancer/types/pancreatic-cancer/treating/pain-control.html" class="citation-link">[32]</a>.
+              </p>
+            </div>
+          </div>
+
+          <!-- Strong Opioids -->
+          <div class="mb-12">
+            <h3 class="serif text-2xl font-semibold text-gray-900 mb-6">
+              <i class="fas fa-prescription text-green-600 mr-3"></i>
+              Role of Strong Opioids and Administration
+            </h3>
+
+            <p class="text-gray-700 mb-6">
+              <strong>Strong opioids</strong>, such as morphine, oxycodone, fentanyl, and buprenorphine, are considered <strong>first-line medical therapy for moderate to severe pancreatic cancer pain</strong>
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4980650/" class="citation-link">[4]</a>,
+              <a href="https://www.cancer.org/cancer/types/pancreatic-cancer/treating/pain-control.html" class="citation-link">[32]</a>.
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div class="section-card p-6">
+                <h4 class="font-semibold text-gray-900 mb-3">
+                  <i class="fas fa-pills text-blue-600 mr-2"></i>
+                  Morphine
+                </h4>
+                <p class="text-gray-700 text-sm mb-3">
+                  Often the standard &#34;Step 3&#34; opioid, widely used for chronic cancer pain management.
+                </p>
+                <div class="text-xs text-gray-600 bg-gray-50 p-2 rounded">
+                  Routes: Oral (normal/modified-release), subcutaneous
+                </div>
+              </div>
+
+              <div class="section-card p-6">
+                <h4 class="font-semibold text-gray-900 mb-3">
+                  <i class="fas fa-band-aid text-purple-600 mr-2"></i>
+                  Fentanyl
+                </h4>
+                <p class="text-gray-700 text-sm mb-3">
+                  Available as transdermal patches (stable pain) or sublingual/nasal (breakthrough).
+                </p>
+                <div class="text-xs text-gray-600 bg-gray-50 p-2 rounded">
+                  Alternative to morphine, various formulations
+                </div>
+              </div>
+
+              <div class="section-card p-6">
+                <h4 class="font-semibold text-gray-900 mb-3">
+                  <i class="fas fa-capsules text-green-600 mr-2"></i>
+                  Oxycodone
+                </h4>
+                <p class="text-gray-700 text-sm mb-3">
+                  Similar analgesic efficacy to morphine in pancreatic cancer pain.
+                </p>
+                <div class="text-xs text-gray-600 bg-gray-50 p-2 rounded">
+                  Individualized selection based on patient needs
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-green-50 p-6 rounded-lg mt-6">
+              <p class="text-green-900 font-medium">
+                <i class="fas fa-clock mr-2"></i>
+                <strong>Regular, around-the-clock dosing is often necessary for continuous pain</strong>, supplemented with &#34;as-needed&#34; doses for breakthrough pain
+                <a href="https://www.webmd.com/cancer/pancreatic-cancer/manage-pancreatic-cancer-pain" class="citation-link">[10]</a>.
+              </p>
+            </div>
+          </div>
+
+          <!-- Interventional Techniques -->
+          <div class="mb-12">
+            <h3 class="serif text-2xl font-semibold text-gray-900 mb-6">
+              <i class="fas fa-syringe text-indigo-600 mr-3"></i>
+              Potential for Interventional Pain Management Techniques
+            </h3>
+
+            <p class="text-gray-700 mb-6">
+              When pharmacological management is insufficient or causes intolerable side effects, <strong>interventional pain management techniques can be considered</strong>. These procedures aim to block pain signals from reaching the brain.
+            </p>
+
+            <div class="section-card p-8">
+              <h4 class="serif text-xl font-semibold text-gray-900 mb-4">
+                <i class="fas fa-crosshairs text-red-600 mr-2"></i>
+                Celiac Plexus Block (CPB) or Neurolysis (CPN)
+              </h4>
+              <p class="text-gray-700 mb-4">
+                For pancreatic cancer pain, particularly pain radiating to the back, a <strong>celiac plexus block or neurolysis is a common intervention</strong>
+                <a href="https://www.webmd.com/cancer/pancreatic-cancer/manage-pancreatic-cancer-pain" class="citation-link">[10]</a>,
+                <a href="https://www.cancer.org/cancer/types/pancreatic-cancer/treating/pain-control.html" class="citation-link">[173]</a>.
+                This involves injecting a local anesthetic or neurolytic agent around the celiac plexus, a network of nerves that transmit pain from the pancreas and other abdominal organs.
+              </p>
+              <div class="bg-indigo-50 p-4 rounded-lg">
+                <p class="text-indigo-900 font-medium mb-2">Benefits:</p>
+                <ul class="text-indigo-800 text-sm list-disc list-inside">
+                  <li>Significant and often prolonged pain relief</li>
+                  <li>Reduces need for high doses of systemic opioids</li>
+                  <li>Decreases opioid-related side effects</li>
+                </ul>
+              </div>
+            </div>
+
+            <p class="text-gray-700 mt-6">
+              Other interventional options include intrathecal therapy (pain medication delivered directly into spinal fluid) or thoracic epidural opioid administration
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4980650/" class="citation-link">[4]</a>,
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4980650/" class="citation-link">[209]</a>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Integrating Management -->
+      <section id="integration" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+          <h2 class="serif text-4xl font-bold text-gray-900 mb-12 text-center">Integrating Pain and Constipation Management</h2>
+
+          <!-- Interplay -->
+          <div class="mb-12">
+            <h3 class="serif text-2xl font-semibold text-gray-900 mb-6">
+              <i class="fas fa-balance-scale text-purple-600 mr-3"></i>
+              The Interplay Between Pain Control and Constipation
+            </h3>
+
+            <p class="text-gray-700 mb-6">
+              Effective pain management, particularly with opioids, is <strong>intrinsically linked to the development or exacerbation of constipation</strong>. Opioids cause constipation by slowing gastrointestinal motility and reducing intestinal secretions
+              <a href="https://www.cancer.gov/about-cancer/treatment/side-effects/constipation" class="citation-link">[7]</a>,
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4980650/" class="citation-link">[80]</a>.
+            </p>
+
+            <div class="warning-box p-8 rounded-xl mb-8">
+              <div class="flex items-center mb-4">
+                <i class="fas fa-exclamation-triangle text-amber-600 text-2xl mr-3"></i>
+                <h4 class="serif text-xl font-semibold text-gray-900">Challenge:</h4>
+              </div>
+              <p class="text-gray-700 mb-4">
+                This creates a challenging situation where <strong>treating one symptom (pain) can worsen another (constipation)</strong>, significantly impacting the patient&#39;s comfort and quality of life.
+              </p>
+              <div class="bg-white p-4 rounded-lg border-l-4 border-amber-500">
+                <p class="text-amber-900">
+                  <strong>Solution:</strong> A <strong>holistic approach where pain management and bowel management are addressed concurrently</strong> and not in isolation.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Concurrent Prophylaxis -->
+          <div class="mb-12">
+            <h3 class="serif text-2xl font-semibold text-gray-900 mb-6">
+              <i class="fas fa-shield-alt text-green-600 mr-3"></i>
+              Necessity of Concurrent Constipation Prophylaxis with Opioid Use
+            </h3>
+
+            <p class="text-gray-700 mb-6">
+              Given the high likelihood of opioid-induced constipation, <strong>prophylactic measures are essential when initiating opioid therapy for cancer pain</strong>. It is generally recommended to <strong>start a bowel regimen, including laxatives, at the same time opioids are prescribed</strong>, rather than waiting for constipation to develop
+              <a href="https://www.cancer.gov/about-cancer/treatment/side-effects/constipation" class="citation-link">[7]</a>,
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10603964/" class="citation-link">[25]</a>.
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div class="highlight-box p-6 rounded-lg">
+                <h4 class="font-semibold text-blue-900 mb-3">
+                  <i class="fas fa-quote-left mr-2"></i>
+                  NCI Recommendation
+                </h4>
+                <p class="text-blue-800 italic">
+                  &#34;If a patient is taking opioid painkillers, their doctor or nurse should also give them laxatives to prevent constipation&#34;
+                  <a href="https://www.pancreaticcancer.org.uk/information/managing-symptoms-and-side-effects/changes-to-bowel-habits/" class="citation-link">[26]</a>.
+                </p>
+              </div>
+
+              <div class="highlight-box p-6 rounded-lg">
+                <h4 class="font-semibold text-blue-900 mb-3">
+                  <i class="fas fa-quote-left mr-2"></i>
+                  NHS England Guidelines
+                </h4>
+                <p class="text-blue-800 italic">
+                  &#34;ANTICIPATE OPIOID SIDE EFFECTS&#34; and &#34;Consider co-prescribing regular laxatives Senna or Docusate as first line&#34;
+                  <a href="https://www.england.nhs.uk/north-west/wp-content/uploads/sites/48/2022/11/20211124-NWC-LSC-and-CM-Palliative-Care-Clinical-Practice-Summary-2nd-Edition-V2.pdf" class="citation-link">[195]</a>.
+                </p>
+              </div>
+            </div>
+
+            <div class="urgent-box p-6 rounded-lg mt-6">
+              <p class="text-red-900 font-medium">
+                <i class="fas fa-exclamation-circle mr-2"></i>
+                <strong>Failure to implement a prophylactic bowel regimen</strong> can lead to significant patient distress, decreased adherence to pain medication due to fear of constipation, and potential complications like fecal impaction.
+              </p>
+            </div>
+          </div>
+
+          <!-- Monitoring -->
+          <div class="mb-12">
+            <h3 class="serif text-2xl font-semibold text-gray-900 mb-6">
+              <i class="fas fa-chart-line text-indigo-600 mr-3"></i>
+              Monitoring and Adjusting Treatment Plans
+            </h3>
+
+            <p class="text-gray-700 mb-6">
+              <strong>Continuous monitoring of both pain and bowel function is critical</strong> when managing a patient with advanced pancreatic cancer. The patient&#39;s pain levels, the effectiveness of the analgesic regimen, and any side effects, particularly constipation, should be regularly assessed.
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div class="section-card p-6">
+                <h4 class="font-semibold text-gray-900 mb-3">
+                  <i class="fas fa-clipboard text-blue-600 mr-2"></i>
+                  Pain Monitoring
+                </h4>
+                <p class="text-gray-700 text-sm mb-3">
+                  A pain journal can track pain intensity, characteristics, timing, and response to medication
+                  <a href="https://www.webmd.com/cancer/pancreatic-cancer/manage-pancreatic-cancer-pain" class="citation-link">[10]</a>.
+                </p>
+                <ul class="text-xs text-gray-600 list-disc list-inside">
+                  <li>Pain intensity (0-10 scale)</li>
+                  <li>Onset and duration</li>
+                  <li>Response to medication</li>
+                  <li>Breakthrough episodes</li>
+                </ul>
+              </div>
+
+              <div class="section-card p-6">
+                <h4 class="font-semibold text-gray-900 mb-3">
+                  <i class="fas fa-toilet text-green-600 mr-2"></i>
+                  Bowel Monitoring
+                </h4>
+                <p class="text-gray-700 text-sm mb-3">
+                  Bowel movements should be monitored for frequency, consistency (e.g., using the Bristol Stool Chart), and ease of passage
+                  <a href="https://www.cancer.gov/about-cancer/treatment/side-effects/constipation" class="citation-link">[7]</a>,
+                  <a href="https://www.england.nhs.uk/north-west/wp-content/uploads/sites/48/2022/11/20211124-NWC-LSC-and-CM-Palliative-Care-Clinical-Practice-Summary-2nd-Edition-V2.pdf" class="citation-link">[195]</a>.
+                </p>
+                <ul class="text-xs text-gray-600 list-disc list-inside">
+                  <li>Frequency of bowel movements</li>
+                  <li>Stool consistency (Bristol Chart)</li>
+                  <li>Ease of passage</li>
+                  <li>Associated symptoms</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="bg-indigo-50 p-6 rounded-lg mt-6">
+              <p class="text-indigo-900 font-medium mb-2">
+                <i class="fas fa-adjust mr-2"></i>
+                Treatment Adjustments:
+              </p>
+              <p class="text-indigo-800 text-sm">
+                Based on ongoing assessment, the treatment plan may need adjustments including titrating pain medication doses, changing opioid types, adding adjuvant analgesics, or modifying the bowel regimen
+                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5995490/" class="citation-link">[2]</a>,
+                <a href="https://www.pancreaticcancer.org.uk/information/managing-symptoms-and-side-effects/changes-to-bowel-habits/" class="citation-link">[26]</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Supportive Care -->
+      <section id="supportive" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+          <h2 class="serif text-4xl font-bold text-gray-900 mb-12 text-center">Supportive Care and Home Management Strategies</h2>
+
+          <!-- Hydration and Diet -->
+          <div class="mb-12">
+            <h3 class="serif text-2xl font-semibold text-gray-900 mb-6">
+              <i class="fas fa-tint text-blue-600 mr-3"></i>
+              Role of Hydration and Diet
+            </h3>
+
+            <p class="text-gray-700 mb-6">
+              <strong>Adequate hydration is a cornerstone of managing constipation</strong>, as fluids help soften stool and promote bowel motility. Encouraging the patient to drink plenty of water and other fluids, unless contraindicated, is generally recommended
+              <a href="https://www.cancer.gov/about-cancer/treatment/side-effects/constipation" class="citation-link">[7]</a>,
+              <a href="https://www.cancer.gov/about-cancer/treatment/side-effects/constipation" class="citation-link">[71]</a>.
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+              <div class="section-card p-6">
+                <h4 class="font-semibold text-gray-900 mb-3">
+                  <i class="fas fa-glass-water text-blue-600 mr-2"></i>
+                  Recommended Fluids
+                </h4>
+                <ul class="text-gray-700 text-sm space-y-2">
+                  <li><i class="fas fa-check text-green-600 mr-2"></i>Plenty of water</li>
+                  <li><i class="fas fa-check text-green-600 mr-2"></i>Warm or hot beverages (herbal tea)</li>
+                  <li><i class="fas fa-check text-green-600 mr-2"></i>Warm water with lemon</li>
+                  <li><i class="fas fa-check text-green-600 mr-2"></i>Prune juice (natural laxative due to sorbitol)</li>
+                </ul>
+              </div>
+
+              <div class="section-card p-6">
+                <h4 class="font-semibold text-gray-900 mb-3">
+                  <i class="fas fa-utensils text-orange-600 mr-2"></i>
+                  Dietary Considerations
+                </h4>
+                <div class="text-gray-700 text-sm space-y-3">
+                  <p><strong>Caution with bulk-forming fibers:</strong> Must be approached with caution in patients with advanced cancer, especially those with poor appetite or low fluid intake
+                    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5995490/" class="citation-link">[2]</a>,
+                    <a href="https://www.virtualhospice.ca/en_US/Main+Site+Navigation/Home/For+Professionals/For+Professionals/Quick+Consults/Symptoms/How+would+you+treat+constipation+in+a+patient+with+advanced+cancer_.aspx" class="citation-link">[64]</a>.
+                  </p>
+                  <div class="bg-orange-50 p-3 rounded">
+                    <p class="text-orange-900 text-xs">
+                      <strong>Instead:</strong> Focus on easily digestible, small, frequent meals that are appealing to the patient
+                      <a href="https://www.mayoclinic.org/diseases-conditions/cancer/in-depth/cancer/art-20045046" class="citation-link">[16]</a>,
+                      <a href="https://letswinpc.org/disease-management/diet/eating-strategies-pancreatic-cancer/" class="citation-link">[17]</a>.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Physical Activity -->
+          <div class="mb-12">
+            <h3 class="serif text-2xl font-semibold text-gray-900 mb-6">
+              <i class="fas fa-walking text-green-600 mr-3"></i>
+              Gentle Physical Activity (as tolerated)
+            </h3>
+
+            <p class="text-gray-700 mb-6">
+              Maintaining some level of <strong>physical activity, as tolerated, can be beneficial for managing constipation</strong>. Gentle movement helps stimulate intestinal motility and can make it easier to pass stool
+              <a href="https://www.cancer.gov/about-cancer/treatment/side-effects/constipation" class="citation-link">[7]</a>,
+              <a href="https://www.cancer.gov/about-cancer/treatment/side-effects/constipation" class="citation-link">[71]</a>.
+            </p>
+
+            <div class="section-card p-8">
+              <div class="flex items-start space-x-4">
+                <div class="text-green-600 text-2xl mt-1">
+                  <i class="fas fa-user-check"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-gray-900 mb-3">For This Patient:</h4>
+                  <p class="text-gray-700 mb-4">
+                    For a patient who is still ambulatory and going to work, like the father in this scenario, <strong>continuing to walk and move around, within the limits of his energy and pain levels, is encouraged</strong>.
+                  </p>
+                  <div class="bg-green-50 p-4 rounded-lg">
+                    <p class="text-green-900 font-medium mb-2">Suggested Activities:</p>
+                    <ul class="text-green-800 text-sm list-disc list-inside">
+                      <li>Moving from bed to chair</li>
+                      <li>Short walks around the house or yard</li>
+                      <li>Light household tasks</li>
+                      <li>Continuing work if energy levels permit</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="warning-box p-6 rounded-lg mt-6">
+              <p class="text-amber-900">
+                <i class="fas fa-info-circle mr-2"></i>
+                <strong>Important:</strong> Balance activity with rest, as fatigue is common in advanced cancer. Ensure adequate pain control to facilitate mobility
+                <a href="https://myhealth.alberta.ca/Health/pages/conditions.aspx?hwid=tv3916spec" class="citation-link">[74]</a>,
+                <a href="https://pancare.org.au/cancer/pancreatic-cancer/pancreatic-cancer-diet-nutrition/" class="citation-link">[255]</a>.
+              </p>
+            </div>
+          </div>
+
+          <!-- Palliative Care Consultation -->
+          <div class="mb-12">
+            <h3 class="serif text-2xl font-semibold text-gray-900 mb-6">
+              <i class="fas fa-user-md text-purple-600 mr-3"></i>
+              Importance of Palliative Care Consultation
+            </h3>
+
+            <p class="text-gray-700 mb-6">
+              Given the advanced stage of pancreatic cancer and the presence of multiple distressing symptoms like back pain and severe constipation, a <strong>consultation with a palliative care team is highly recommended</strong>. Palliative care specialists are experts in managing complex symptoms and improving quality of life for patients with serious illnesses
+              <a href="https://www.macmillan.org.uk/cancer-information-and-support/pancreatic-cancer/controlling-symptoms-of-pancreatic-cancer" class="citation-link">[27]</a>,
+              <a href="https://www.capc.org/blog/how-to-help-relieve-constipation-in-patients-with-serious-illness/" class="citation-link">[62]</a>.
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div class="highlight-box p-6 rounded-lg">
+                <h4 class="font-semibold text-blue-900 mb-3">
+                  <i class="fas fa-hand-holding-medical mr-2"></i>
+                  Comprehensive Support
+                </h4>
+                <p class="text-blue-800 text-sm mb-3">
+                  Palliative care teams provide comprehensive assessment of physical, emotional, and spiritual needs and develop tailored symptom management plans.
+                </p>
+                <ul class="text-blue-700 text-xs list-disc list-inside">
+                  <li>Optimizing pain control</li>
+                  <li>Addressing constipation and GI issues</li>
+                  <li>Managing loss of appetite</li>
+                  <li>Providing psychosocial support</li>
+                </ul>
+              </div>
+
+              <div class="highlight-box p-6 rounded-lg">
+                <h4 class="font-semibold text-blue-900 mb-3">
+                  <i class="fas fa-chart-line mr-2"></i>
+                  Proven Benefits
+                </h4>
+                <p class="text-blue-800 text-sm mb-3">
+                  <strong>Early referral to palliative care has been shown to improve symptom control, patient satisfaction, and may even prolong survival</strong> in some cases
+                  <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10603964/" class="citation-link">[237]</a>.
+                </p>
+                <div class="bg-white p-3 rounded border-l-4 border-blue-500">
+                  <p class="text-blue-900 font-medium text-xs">
+                    They help navigate difficult decisions and provide support through all illness stages.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Emergency Signs -->
+      <section id="emergency" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+          <h2 class="serif text-4xl font-bold text-gray-900 mb-12 text-center">When to Seek Immediate Medical Attention</h2>
+
+          <div class="urgent-box p-8 rounded-xl mb-8">
+            <h3 class="serif text-2xl font-semibold text-gray-900 mb-6">
+              <i class="fas fa-exclamation-triangle text-red-600 mr-3"></i>
+              Red Flag Symptoms Requiring Immediate Medical Attention
+            </h3>
+
+            <p class="text-gray-700 mb-6">
+              While many cases of constipation can be managed with dietary adjustments, increased fluids, and laxatives, <strong>certain symptoms indicate a more serious condition requiring immediate medical attention</strong>.
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+              <div class="section-card p-6 border-l-4 border-red-500">
+                <h4 class="font-semibold text-gray-900 mb-3">
+                  <i class="fas fa-bell text-red-600 mr-2"></i>
+                  Signs of Fecal Impaction
+                </h4>
+                <p class="text-gray-700 text-sm mb-3">
+                  <strong>Fecal impaction</strong>, a severe complication where hard, dry stool becomes stuck in the rectum or colon
+                  <a href="https://www.cancer.gov/about-cancer/treatment/side-effects/constipation" class="citation-link">[7]</a>:
+                </p>
+                <ul class="text-gray-600 text-xs list-disc list-inside space-y-1">
+                  <li>Severe abdominal pain or cramping</li>
+                  <li>Abdominal distension</li>
+                  <li>Nausea and vomiting (especially if fecal-smelling)</li>
+                  <li>Inability to pass gas or stool despite the urge</li>
+                  <li>Sometimes diarrhea (liquid stool leaks around impacted mass)
+                    <a href="https://www.pancreaticcancer.org.uk/information/end-of-life-care-for-pancreatic-cancer/symptoms-towards-end-of-life/bowel-problems-towards-the-end-of-life/" class="citation-link">[75]</a>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="section-card p-6 border-l-4 border-orange-500">
+                <h4 class="font-semibold text-gray-900 mb-3">
+                  <i class="fas fa-exclamation-circle text-orange-600 mr-2"></i>
+                  Bowel Obstruction
+                </h4>
+                <p class="text-gray-700 text-sm mb-3">
+                  A <strong>bowel obstruction</strong>, which can be caused by the cancer itself or severe constipation, also presents with similar severe symptoms and is a medical emergency
+                  <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3144439/" class="citation-link">[1]</a>,
+                  <a href="https://www.cancer.gov/about-cancer/treatment/side-effects/constipation" class="citation-link">[7]</a>.
+                </p>
+                <div class="bg-orange-50 p-3 rounded">
+                  <p class="text-orange-900 font-medium text-xs">
+                    Contact healthcare team immediately if these symptoms appear.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-red-100 p-6 rounded-lg border-2 border-red-300">
+              <h4 class="font-semibold text-red-900 mb-3">
+                <i class="fas fa-phone-alt mr-2"></i>
+                When to Notify the Care Team Immediately:
+              </h4>
+              <ul class="text-red-800 text-sm list-disc list-inside space-y-2">
+                <li>Fewer than three bowel movements in a week, especially with severe abdominal pain or vomiting
+                  <a href="https://www.cancer.gov/about-cancer/treatment/side-effects/constipation" class="citation-link">[7]</a>,
+                  <a href="https://www.cancer.gov/about-cancer/treatment/side-effects/constipation" class="citation-link">[71]</a>
+                </li>
+                <li>Blood in the stool</li>
+                <li>New or worsening nausea and vomiting
+                  <a href="https://myhealth.alberta.ca/Health/pages/conditions.aspx?hwid=tv3916spec" class="citation-link">[74]</a>
+                </li>
+                <li>Severe symptoms that don&#39;t improve with current treatment</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Final Recommendations -->
+          <div class="highlight-box p-8 rounded-xl">
+            <h3 class="serif text-2xl font-semibold text-gray-900 mb-6 text-center">
+              <i class="fas fa-clipboard-check text-blue-600 mr-3"></i>
+              Summary of Immediate Actions
+            </h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div class="text-center">
+                <div class="text-red-600 text-4xl mb-4">
+                  <i class="fas fa-user-md"></i>
+                </div>
+                <h4 class="font-semibold text-gray-900 mb-2">1. Medical Consultation</h4>
+                <p class="text-gray-700 text-sm">
+                  Urgently consult doctor or palliative care specialist for severe constipation medication and pain management optimization.
+                </p>
+              </div>
+
+              <div class="text-center">
+                <div class="text-blue-600 text-4xl mb-4">
+                  <i class="fas fa-pills"></i>
+                </div>
+                <h4 class="font-semibold text-gray-900 mb-2">2. Proactive Bowel Protocol</h4>
+                <p class="text-gray-700 text-sm">
+                  Implement systematic laxative regimen concurrent with any opioid therapy, starting on the same day.
+                </p>
+              </div>
+
+              <div class="text-center">
+                <div class="text-green-600 text-4xl mb-4">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <h4 class="font-semibold text-gray-900 mb-2">3. Regular Monitoring</h4>
+                <p class="text-gray-700 text-sm">
+                  Continuous assessment of both pain and bowel function with appropriate treatment adjustments.
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-8 p-6 bg-white rounded-lg border-2 border-blue-200">
+              <p class="text-center text-gray-800 font-medium">
+                <i class="fas fa-heart text-red-500 mr-2"></i>
+                The goal is to achieve optimal symptom control while maintaining the highest possible quality of life through comprehensive, coordinated care.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+          <div class="text-center">
+            <p class="text-gray-400 mb-4">
+              This information is for educational purposes and should not replace professional medical advice.
+            </p>
+            <p class="text-gray-500 text-sm">
+              Consult with healthcare professionals for personalized treatment recommendations.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+        // Initialize Mermaid
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            themeVariables: {
+                primaryColor: '#dbeafe',
+                primaryTextColor: '#1f2937',
+                primaryBorderColor: '#2563eb',
+                lineColor: '#6b7280',
+                secondaryColor: '#f3e8ff',
+                tertiaryColor: '#fef3c7',
+                background: '#ffffff',
+                mainBkg: '#ffffff',
+                secondaryBkg: '#f8fafc',
+                tertiaryBkg: '#f1f5f9',
+                primaryBorderColor: '#2563eb',
+                secondaryBorderColor: '#7c3aed',
+                tertiaryBorderColor: '#d97706',
+                primaryTextColor: '#1f2937',
+                secondaryTextColor: '#1f2937',
+                tertiaryTextColor: '#1f2937',
+                lineColor: '#6b7280',
+                textColor: '#1f2937',
+                THEME_COLOR_LIMIT: 12
+            },
+            flowchart: {
+                htmlLabels: true,
+                curve: 'basis',
+                padding: 20,
+                nodeSpacing: 50,
+                rankSpacing: 80,
+                diagramPadding: 20,
+                useMaxWidth: true,
+                defaultRenderer: 'svg'
+            },
+            fontFamily: 'Inter, sans-serif',
+            fontSize: '13px',
+            fontWeight: '500'
+        });
+
+        // Initialize Mermaid Controls for zoom and pan
+        function initializeMermaidControls() {
+            const containers = document.querySelectorAll('.mermaid-container');
+
+            containers.forEach(container => {
+            const mermaidElement = container.querySelector('.mermaid');
+            let scale = 1;
+            let isDragging = false;
+            let startX, startY, translateX = 0, translateY = 0;
+
+            // 触摸相关状态
+            let isTouch = false;
+            let touchStartTime = 0;
+            let initialDistance = 0;
+            let initialScale = 1;
+            let isPinching = false;
+
+            // Zoom controls
+            const zoomInBtn = container.querySelector('.zoom-in');
+            const zoomOutBtn = container.querySelector('.zoom-out');
+            const resetBtn = container.querySelector('.reset-zoom');
+            const fullscreenBtn = container.querySelector('.fullscreen');
+
+            function updateTransform() {
+                mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+
+                if (scale > 1) {
+                container.classList.add('zoomed');
+                } else {
+                container.classList.remove('zoomed');
+                }
+
+                mermaidElement.style.cursor = isDragging ? 'grabbing' : 'grab';
+            }
+
+            if (zoomInBtn) {
+                zoomInBtn.addEventListener('click', () => {
+                scale = Math.min(scale * 1.25, 4);
+                updateTransform();
+                });
+            }
+
+            if (zoomOutBtn) {
+                zoomOutBtn.addEventListener('click', () => {
+                scale = Math.max(scale / 1.25, 0.3);
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+                updateTransform();
+                });
+            }
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                scale = 1;
+                translateX = 0;
+                translateY = 0;
+                updateTransform();
+                });
+            }
+
+            if (fullscreenBtn) {
+                fullscreenBtn.addEventListener('click', () => {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                }
+                });
+            }
+
+            // Mouse Events
+            mermaidElement.addEventListener('mousedown', (e) => {
+                if (isTouch) return; // 如果是触摸设备，忽略鼠标事件
+
+                isDragging = true;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                mermaidElement.style.cursor = 'grabbing';
+                updateTransform();
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging && !isTouch) {
+                translateX = e.clientX - startX;
+                translateY = e.clientY - startY;
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseleave', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            // 获取两点之间的距离
+            function getTouchDistance(touch1, touch2) {
+                return Math.hypot(
+                touch2.clientX - touch1.clientX,
+                touch2.clientY - touch1.clientY
+                );
+            }
+
+            // Touch Events - 触摸事件处理
+            mermaidElement.addEventListener('touchstart', (e) => {
+                isTouch = true;
+                touchStartTime = Date.now();
+
+                if (e.touches.length === 1) {
+                // 单指拖动
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+
+                } else if (e.touches.length === 2) {
+                // 双指缩放
+                isPinching = true;
+                isDragging = false;
+
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                initialDistance = getTouchDistance(touch1, touch2);
+                initialScale = scale;
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchmove', (e) => {
+                if (e.touches.length === 1 && isDragging && !isPinching) {
+                // 单指拖动
+                const touch = e.touches[0];
+                translateX = touch.clientX - startX;
+                translateY = touch.clientY - startY;
+                updateTransform();
+
+                } else if (e.touches.length === 2 && isPinching) {
+                // 双指缩放
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                const currentDistance = getTouchDistance(touch1, touch2);
+
+                if (initialDistance > 0) {
+                    const newScale = Math.min(Math.max(
+                    initialScale * (currentDistance / initialDistance),
+                    0.3
+                    ), 4);
+                    scale = newScale;
+                    updateTransform();
+                }
+                }
+
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchend', (e) => {
+                // 重置状态
+                if (e.touches.length === 0) {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                // 延迟重置isTouch，避免鼠标事件立即触发
+                setTimeout(() => {
+                    isTouch = false;
+                }, 100);
+                } else if (e.touches.length === 1 && isPinching) {
+                // 从双指变为单指，切换为拖动模式
+                isPinching = false;
+                isDragging = true;
+
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+                }
+
+                updateTransform();
+            });
+
+            mermaidElement.addEventListener('touchcancel', (e) => {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+
+                setTimeout(() => {
+                isTouch = false;
+                }, 100);
+
+                updateTransform();
+            });
+
+            // Enhanced wheel zoom with better center point handling
+            container.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const rect = container.getBoundingClientRect();
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                const newScale = Math.min(Math.max(scale * delta, 0.3), 4);
+
+                // Adjust translation to zoom towards center
+                if (newScale !== scale) {
+                const scaleDiff = newScale / scale;
+                translateX = translateX * scaleDiff;
+                translateY = translateY * scaleDiff;
+                scale = newScale;
+
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+
+                updateTransform();
+                }
+            });
+
+            // Initialize display
+            updateTransform();
+            });
+        }
+
+        // Initialize Mermaid and controls
+        document.addEventListener('DOMContentLoaded', function() {
+            mermaid.initialize({
+                startOnLoad: true,
+                theme: 'default',
+                themeVariables: {
+                    primaryColor: '#dbeafe',
+                    primaryTextColor: '#1f2937',
+                    primaryBorderColor: '#2563eb',
+                    lineColor: '#6b7280',
+                    secondaryColor: '#f3e8ff',
+                    tertiaryColor: '#fef3c7',
+                    background: '#ffffff',
+                    mainBkg: '#ffffff',
+                    secondaryBkg: '#f8fafc',
+                    tertiaryBkg: '#f1f5f9',
+                    primaryBorderColor: '#2563eb',
+                    secondaryBorderColor: '#7c3aed',
+                    tertiaryBorderColor: '#d97706',
+                    primaryTextColor: '#1f2937',
+                    secondaryTextColor: '#1f2937',
+                    tertiaryTextColor: '#1f2937',
+                    lineColor: '#6b7280',
+                    textColor: '#1f2937',
+                    THEME_COLOR_LIMIT: 12
+                },
+                flowchart: {
+                    htmlLabels: true,
+                    curve: 'basis',
+                    padding: 20,
+                    nodeSpacing: 50,
+                    rankSpacing: 80,
+                    diagramPadding: 20,
+                    useMaxWidth: true,
+                    defaultRenderer: 'svg'
+                },
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '13px',
+                fontWeight: '500'
+            });
+
+            // Wait for mermaid to render before initializing controls
+            setTimeout(initializeMermaidControls, 1000);
+        });
+
+        function toggleToc() {
+            const toc = document.querySelector('.toc-fixed');
+            toc.classList.toggle('open');
+        }
+        
+        // Close TOC when clicking outside (mobile only)
+        document.addEventListener('click', function(event) {
+            const toc = document.querySelector('.toc-fixed');
+            const menuButton = document.querySelector('button[onclick="toggleToc()"]');
+            
+            // Only for mobile (width < 1024) and when TOC is open
+            if (window.innerWidth < 1024 && toc.classList.contains('open')) {
+                // Check if click is outside TOC and outside menu button
+                if (!toc.contains(event.target) && event.target !== menuButton) {
+                    toc.classList.remove('open');
+                }
+            }
+        });
+        
+        // Reset TOC state on desktop
+        window.addEventListener('resize', function() {
+            const toc = document.querySelector('.toc-fixed');
+            if (window.innerWidth >= 1024) {
+                toc.classList.remove('open');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+
+                // Close TOC on mobile
+                if (window.innerWidth < 1024) {
+                    const toc = document.querySelector('.toc-fixed');
+                    toc.classList.remove('open');
+                }
+            });
+        });
+    </script>
+  
+
+</body></html>
